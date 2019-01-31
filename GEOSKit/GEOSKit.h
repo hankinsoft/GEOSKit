@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "geos_c.h"
-#import "export.h"
 
 //! Project version number for GEOSKit.
 FOUNDATION_EXPORT double GEOSKitVersionNumber;
