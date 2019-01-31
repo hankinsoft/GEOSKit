@@ -163,7 +163,7 @@ typedef int (*GEOSDistanceCallback)(const void *item1, const void* item2, double
  *
  ***********************************************************************/
 
-#include <geos/export.h>
+#include "export.h"
 
 /*
  * Register an interruption checking callback
