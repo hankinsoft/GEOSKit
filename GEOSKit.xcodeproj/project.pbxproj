@@ -306,8 +306,22 @@
 		724D37352203601100146FDA /* geos_ts_c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 724D37332203601100146FDA /* geos_ts_c.cpp */; };
 		724D37362203601100146FDA /* geos_c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 724D37342203601100146FDA /* geos_c.cpp */; };
 		724D37452203612200146FDA /* geos_c.h in Headers */ = {isa = PBXBuildFile; fileRef = 724D37442203612200146FDA /* geos_c.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		724D37472203618700146FDA /* export.h in Headers */ = {isa = PBXBuildFile; fileRef = 724D37462203618700146FDA /* export.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		724D3769220373D000146FDA /* export.h in Headers */ = {isa = PBXBuildFile; fileRef = 724D3768220373D000146FDA /* export.h */; };
+		724D376A2203740600146FDA /* export.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 724D3768220373D000146FDA /* export.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		724D37632203725600146FDA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Headers/geos";
+			dstSubfolderSpec = 0;
+			files = (
+				724D376A2203740600146FDA /* export.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		724CE3D22203595B0079C3B9 /* GEOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GEOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -611,7 +625,7 @@
 		724D37332203601100146FDA /* geos_ts_c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = geos_ts_c.cpp; path = geos/capi/geos_ts_c.cpp; sourceTree = SOURCE_ROOT; };
 		724D37342203601100146FDA /* geos_c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = geos_c.cpp; path = geos/capi/geos_c.cpp; sourceTree = SOURCE_ROOT; };
 		724D37442203612200146FDA /* geos_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = geos_c.h; path = geos/capi/geos_c.h; sourceTree = SOURCE_ROOT; };
-		724D37462203618700146FDA /* export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = export.h; path = geos/include/geos/export.h; sourceTree = SOURCE_ROOT; };
+		724D3768220373D000146FDA /* export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = export.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -646,7 +660,6 @@
 			children = (
 				724D349222035ECE00146FDA /* geos */,
 				724D37442203612200146FDA /* geos_c.h */,
-				724D37462203618700146FDA /* export.h */,
 				724CE3D52203595B0079C3B9 /* GEOSKit.h */,
 				724CE3D62203595B0079C3B9 /* Info.plist */,
 			);
@@ -656,10 +669,12 @@
 		724D349222035ECE00146FDA /* geos */ = {
 			isa = PBXGroup;
 			children = (
+				724D37652203738100146FDA /* include */,
 				724D373222035FFE00146FDA /* capi */,
 				724D349322035ED400146FDA /* src */,
 			);
-			path = geos;
+			name = geos;
+			path = ../geos;
 			sourceTree = "<group>";
 		};
 		724D349322035ED400146FDA /* src */ = {
@@ -1618,6 +1633,22 @@
 			path = capi;
 			sourceTree = "<group>";
 		};
+		724D37652203738100146FDA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				724D3767220373B500146FDA /* geos */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		724D3767220373B500146FDA /* geos */ = {
+			isa = PBXGroup;
+			children = (
+				724D3768220373D000146FDA /* export.h */,
+			);
+			path = geos;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1625,8 +1656,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724D3769220373D000146FDA /* export.h in Headers */,
 				724D37452203612200146FDA /* geos_c.h in Headers */,
-				724D37472203618700146FDA /* export.h in Headers */,
 				724D368522035FC300146FDA /* IndexedNestedRingTester.h in Headers */,
 				724CE3D72203595B0079C3B9 /* GEOSKit.h in Headers */,
 			);
@@ -1643,6 +1674,7 @@
 				724CE3CE2203595B0079C3B9 /* Sources */,
 				724CE3CF2203595B0079C3B9 /* Frameworks */,
 				724CE3D02203595B0079C3B9 /* Resources */,
+				724D37632203725600146FDA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -2134,7 +2166,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/geos/include\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/geos/include\"",
+					"\"$(PUBLIC_HEADERS_FOLDER_PATH)\"",
+				);
 				INFOPLIST_FILE = GEOSKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2161,7 +2196,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/geos/include\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/geos/include\"",
+					"\"$(PUBLIC_HEADERS_FOLDER_PATH)\"",
+				);
 				INFOPLIST_FILE = GEOSKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
