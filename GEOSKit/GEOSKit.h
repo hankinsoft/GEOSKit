@@ -6,7 +6,12 @@
 //  Copyright © 2019 Hankinsoft Development, Inc. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+@import UIKit;
+#elif !TARGET_OS_IPHONE && TARGET_OS_MAC
 #import <Cocoa/Cocoa.h>
+#endif
+
 #import "geos_c.h"
 #import "export.h"
 
